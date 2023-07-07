@@ -12,8 +12,8 @@
 # <xbar.dependencies></xbar.dependencies>
 # <xbar.image>https://i.imgur.com/GVSUqFX.png</xbar.image>
 
-# Appears in the menubar YYYY-MM-DD
-date +%F
+# Appears in the menubar YYYY-MM-DDTHH:mm:SSZ
+date -u +"%Y-%m-%dT%H:%M:%SZ"
 echo "---"
 
 #---ISO8601
@@ -28,34 +28,8 @@ echo "---"
 
 #---USA
 
-MDY=$(date "+%D")
+MDY=$(date +"%Y-%m-%dT%H:%M:%SZ")
 echo "$MDY |bash='$0' param1=copy param2=$MDY terminal=false"
-
- MonDY=$(date +"%b %d %Y")
- echo "$MonDY |bash='$0' param1=copy param2=\"$MonDY\" terminal=false"
-
-TIME12=$(date +"%r")
-echo "$TIME12 |bash='$0' param1=copy param2=\"$TIME12\" terminal=false"
-
-echo "---"
-
-
-#---REST OF THE WORLD
-
-DMY=$(date +"%d/%m/%y")
-echo "$DMY |bash='$0' param1=copy param2=$YMD terminal=false"
-
-DMonY=$(date +"%d %b %Y")
-echo "$DMonY |bash='$0' param1=copy param2=\"$DMonY\" terminal=false"
-
-TIMESTAMP=$(date +"%T %D")
-echo "$TIMESTAMP |bash='$0' param1=copy param2=\"$TIMESTAMP\" terminal=false"
-
-
-TIME24=$(date +"%R:%S")
-echo "$TIME24 |bash='$0' param1=copy param2=\"$TIME24\" terminal=false"
-
-
 
 if [[ "$#" -ge 1 ]];then
     if [[ "$1" == 'copy' ]] ; then
